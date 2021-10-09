@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 const passport = require('passport');
 const authentiate = require('./authenticating');
 const profile = require('./routes/profile');
+const cors = require('cors');
 
 
 
@@ -21,10 +22,12 @@ connect.then((db)=>
 
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
